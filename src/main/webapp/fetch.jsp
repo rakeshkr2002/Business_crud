@@ -11,6 +11,7 @@
 <body>
     <div align="center">
     <h1>Employee Records Table</h1>
+    <h1>${success}</h1>
     <table border="1">
     		<tr>
     		<th> Name</th>
@@ -29,7 +30,7 @@
     		 		<th> 
     		 		<a href="remove?id=${emp.id}"><button>Delete</button> </a>
     		 		</th>
-    		 		<th><button>Edit</button></th>
+    		 		<th><a href="edit?id=${emp.id }"><button>Edit</button></a></th>
     		 </tr>
     		</x:forEach>
     </table>

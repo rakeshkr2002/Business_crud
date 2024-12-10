@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import mvc.dto.Employee;
 import mvc.service.EmployeeService;
@@ -30,14 +32,28 @@ public class EmployeeController {
 		return service.add(employee, map);
 	}
 	
+//	@GetMapping("/remove")
+//	public String remove(Employee employee,ModelMap map) {
+//		return service.remove(employee, map);
+//	}
 	@GetMapping("/remove")
-	public String remove(Employee employee,ModelMap map) {
-		return service.remove(employee, map);
+	private String remove(@RequestParam int id,ModelMap map) {
+		// TODO Auto-generated method stub
+		return service.remove(id, map);
 	}
 	
-	@GetMapping("/fetch")
+	@RequestMapping("/fetch")
 	public String fetch(ModelMap map) {
 		return service.fetch(map);
 	}
 	
+	
+	@GetMapping("/edit")
+	public String edit(@RequestParam int id, ModelMap map) {
+		return service.edit(id,map);
+	}
+	@PostMapping("/update")
+	public String update(Employee employee,ModelMap map) {
+		return service.update(employee, map);
+	}
 }

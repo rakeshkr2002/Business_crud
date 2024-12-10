@@ -29,15 +29,32 @@ public class EmployeeDao {
 		return entityManager.createNativeQuery("select * from employee",Employee.class).getResultList();
 	}
 	
-	public void remove(Employee employee) {
-		entityTransaction.begin();
-        if (!entityManager.contains(employee)) {
-            employee = entityManager.merge(employee);
-        }
-		entityManager.remove(employee);
-		entityTransaction.commit();
+//	public void remove(Employee employee) {
+//		entityTransaction.begin();
+//        if (!entityManager.contains(employee)) {
+//            employee = entityManager.merge(employee);
+//        }
+//		entityManager.remove(employee);
+//		entityTransaction.commit();
+//	}
+
+	public Employee find(int id) {
+		return entityManager.find(Employee.class, id);
+		
 	}
 	
-	
+	public void remove(Employee employee) {
+	entityTransaction.begin();
+   
+	entityManager.remove(employee);
+	entityTransaction.commit();
+}
+
+	public void update(Employee employee) {
+		// TODO Auto-generated method stub
+		entityTransaction.begin();
+		entityManager.merge(employee);
+		entityTransaction.commit();
+	}
 	
 }
